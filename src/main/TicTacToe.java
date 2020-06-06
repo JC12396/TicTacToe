@@ -5,10 +5,11 @@ import java.util.List;
 import java.lang.Math;
 
 public class TicTacToe {
+    public static List<String> ticTacToeBoardRow1 = new ArrayList<>();
+    public static List<String> ticTacToeBoardRow2 = new ArrayList<>();
+    public  static List<String> ticTacToeBoardRow3 = new ArrayList<>();
     public static void main(String[] args) {
-        List<String> ticTacToeBoardRow1 = new ArrayList<>();
-        List<String> ticTacToeBoardRow2 = new ArrayList<>();
-        List<String> ticTacToeBoardRow3 = new ArrayList<>();
+
         for (int i = 0; i < 3; i++) {
             ticTacToeBoardRow1.add("■");
             ticTacToeBoardRow2.add("■");
@@ -19,6 +20,7 @@ public class TicTacToe {
 //        int num[] = new int[5];
         int aiPlacement = 0;
         int turns = 0;
+        boolean canPlace = false;
 
         Scanner input = new Scanner(System.in);
 
@@ -32,185 +34,132 @@ public class TicTacToe {
                 System.out.print("Please enter which square you would like for your X!(It's setup like a keypad.) >> ");
                 playerPlacement = input.nextInt();
                 if (playerPlacement <= 9 && playerPlacement > 0) {
-                    if (playerPlacement == 1) {
-                        ticTacToeBoardRow1.remove(0);
-                        ticTacToeBoardRow1.add(0,"X");
-                        System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
-                        turns++;
-                    } else if (playerPlacement == 2)
-                        ticTacToeBoardRow1.remove(1);
-                        ticTacToeBoardRow1.add(1,"X");
-                        System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
-                        turns++;
-                } else if (playerPlacement == 3) {
-                        ticTacToeBoardRow1.remove(2);
-                        ticTacToeBoardRow1.add(2,"X");
-                        System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
-                        turns++;
-                } else if (playerPlacement == 4) {
-                        ticTacToeBoardRow2.remove(0);
-                        ticTacToeBoardRow2.add("X");
-                        System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
-                        turns++;
-                } else if (playerPlacement == 5) {
-                        ticTacToeBoardRow2.remove(1);
-                        ticTacToeBoardRow2.add( "X");
-                        System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
-                        turns++;
-                } else if (playerPlacement == 6) {
-                        ticTacToeBoardRow2.remove(2);
-                        ticTacToeBoardRow2.add( "X");
-                        System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
-                        turns++;
-                } else if (playerPlacement == 7) {
+                    if (playerPlacement == 1 && ticTacToeBoardRow3.get(0) == "■") {
                         ticTacToeBoardRow3.remove(0);
-                        ticTacToeBoardRow3.add( "X");
+                        ticTacToeBoardRow3.add(0, "X");
                         System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
                         turns++;
-                } else if (playerPlacement == 8) {
+                    } else if (playerPlacement == 2 && ticTacToeBoardRow3.get(1) == "■") {
                         ticTacToeBoardRow3.remove(1);
-                        ticTacToeBoardRow3.add("X");
+                        ticTacToeBoardRow3.add(1, "X");
                         System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
                         turns++;
-                } else if (playerPlacement == 9) {
+                    } else if (playerPlacement == 3 && ticTacToeBoardRow3.get(2) == "■") {
                         ticTacToeBoardRow3.remove(2);
-                        ticTacToeBoardRow3.add( "X");
+                        ticTacToeBoardRow3.add(2, "X");
                         System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
                         turns++;
-                }
-                else {
-                    System.out.println("no");
-                    System.exit(0);
+                    } else if (playerPlacement == 4 && ticTacToeBoardRow2.get(0) == "■") {
+                        ticTacToeBoardRow2.remove(0);
+                        ticTacToeBoardRow2.add(0, "X");
+                        System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
+                        turns++;
+                    } else if (playerPlacement == 5 && ticTacToeBoardRow2.get(1) == "■") {
+                        ticTacToeBoardRow2.remove(1);
+                        ticTacToeBoardRow2.add(1, "X");
+                        System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
+                        turns++;
+                    } else if (playerPlacement == 6 && ticTacToeBoardRow2.get(2) == "■") {
+                        ticTacToeBoardRow2.remove(2);
+                        ticTacToeBoardRow2.add(2, "X");
+                        System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
+                        turns++;
+                    } else if (playerPlacement == 7 && ticTacToeBoardRow1.get(0) == "■") {
+                        ticTacToeBoardRow1.remove(0);
+                        ticTacToeBoardRow1.add(0, "X");
+                        System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
+                        turns++;
+                    } else if (playerPlacement == 8 && ticTacToeBoardRow1.get(1) == "■") {
+                        ticTacToeBoardRow1.remove(1);
+                        ticTacToeBoardRow1.add(1, "X");
+                        System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
+                        turns++;
+                    } else if (playerPlacement == 9 && ticTacToeBoardRow1.get(2) == "■") {
+                        ticTacToeBoardRow1.remove(2);
+                        ticTacToeBoardRow1.add(2, "X");
+                        System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
+                        turns++;
+                    } else {
+                        System.out.println("Can't place there again bucko");
+                        System.exit(0);
 
-                }
-                aiPlacement = (int) ((Math.random() * 9) + 1);
-                if (aiPlacement == 1) {
-                    ticTacToeBoardRow1.remove(0);
-                    ticTacToeBoardRow1.add(0, "O");
-                    System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
-                    turns++;
-                } else if (aiPlacement == 2) {
-                    ticTacToeBoardRow1.remove(1);
-                    ticTacToeBoardRow1.add(1, "O");
-                    System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
-                    turns++;
-                } else if (aiPlacement == 3) {
-                    ticTacToeBoardRow1.remove(2);
-                    ticTacToeBoardRow1.add(2, "O");
-                    System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
-                    turns++;
-                } else if (aiPlacement == 4) {
-                    ticTacToeBoardRow2.remove(0);
-                    ticTacToeBoardRow2.add(0, "O");
-                    System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
-                    turns++;
-                } else if (aiPlacement == 5) {
-                    ticTacToeBoardRow2.remove(1);
-                    ticTacToeBoardRow2.add(1, "O");
-                    System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
-                    turns++;
-                } else if (aiPlacement == 6) {
-                    ticTacToeBoardRow2.remove(2);
-                    ticTacToeBoardRow2.add(2, "O");
-                    System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
-                    turns++;
-                } else if (aiPlacement == 7) {
-                    ticTacToeBoardRow3.remove(0);
-                    ticTacToeBoardRow3.add(0, "O");
-                    System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
-                    turns++;
-                } else if (aiPlacement == 8) {
-                    ticTacToeBoardRow3.remove(1);
-                    ticTacToeBoardRow3.add(1, "O");
-                    System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
-                    turns++;
-                } else if (aiPlacement == 9) {
-                    ticTacToeBoardRow3.remove(2);
-                    ticTacToeBoardRow3.add(2, "O");
-                    System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
-                    turns++;
-                } else {
-                    System.out.println("no");
-                    System.exit(0);
-                }
-                if (ticTacToeBoardRow1.get(0) == "X" && ticTacToeBoardRow1.get(1) == "X" && ticTacToeBoardRow1.get(2) == "X") {
-                    System.out.println("You Win");
-                    System.exit(0);
-                }
-                else if(ticTacToeBoardRow1.get(0) == "X" && ticTacToeBoardRow2.get(0) == "X" && ticTacToeBoardRow3.get(0) == "X"){
-                    System.out.println("You Win");
-                    System.exit(0);
-                }
-                else if(ticTacToeBoardRow1.get(1) == "X" && ticTacToeBoardRow2.get(1) == "X" && ticTacToeBoardRow3.get(1) == "X"){
-                    System.out.println("You Win");
-                    System.exit(0);
-                }
-                else if(ticTacToeBoardRow1.get(2) == "X" && ticTacToeBoardRow2.get(2) == "X" && ticTacToeBoardRow3.get(2) == "X"){
-                    System.out.println("You Win");
-                    System.exit(0);
-                }
-                else if(ticTacToeBoardRow2.get(0) == "X" && ticTacToeBoardRow2.get(1) == "X" && ticTacToeBoardRow2.get(2) == "X"){
-                    System.out.println("You Win");
-                    System.exit(0);
-                }
-                else if(ticTacToeBoardRow3.get(0) == "X" && ticTacToeBoardRow3.get(1) == "X" && ticTacToeBoardRow3.get(2) == "X"){
-                    System.out.println("You Win");
-                    System.exit(0);
-                }
-                else if(ticTacToeBoardRow1.get(0) == "X" && ticTacToeBoardRow2.get(1) == "X" && ticTacToeBoardRow3.get(2) == "X"){
-                    System.out.println("You Win");
-                    System.exit(0);
-                }
-                else if(ticTacToeBoardRow3.get(0) == "X" && ticTacToeBoardRow2.get(1) == "X" && ticTacToeBoardRow1.get(2) == "X"){
-                    System.out.println("You Win");
-                    System.exit(0);
-                }
-                if (ticTacToeBoardRow1.get(0) == "O" && ticTacToeBoardRow1.get(1) == "O" && ticTacToeBoardRow1.get(2) == "O") {
-                    System.out.println("You Win");
-                    System.exit(0);
-                }
-                else if(ticTacToeBoardRow1.get(0) == "O" && ticTacToeBoardRow2.get(0) == "O" && ticTacToeBoardRow3.get(0) == "O"){
-                    System.out.println("You Win");
-                    System.exit(0);
-                }
-                else if(ticTacToeBoardRow1.get(1) == "O" && ticTacToeBoardRow2.get(1) == "O" && ticTacToeBoardRow3.get(1) == "O"){
-                    System.out.println("You Win");
-                    System.exit(0);
-                }
-                else if(ticTacToeBoardRow1.get(2) == "O" && ticTacToeBoardRow2.get(2) == "O" && ticTacToeBoardRow3.get(2) == "O"){
-                    System.out.println("You Win");
-                    System.exit(0);
-                }
-                else if(ticTacToeBoardRow2.get(0) == "O" && ticTacToeBoardRow2.get(1) == "O" && ticTacToeBoardRow2.get(2) == "O"){
-                    System.out.println("You Win");
-                    System.exit(0);
-                }
-                else if(ticTacToeBoardRow3.get(0) == "O" && ticTacToeBoardRow3.get(1) == "O" && ticTacToeBoardRow3.get(2) == "O"){
-                    System.out.println("You Win");
-                    System.exit(0);
-                }
-                else if(ticTacToeBoardRow1.get(0) == "O" && ticTacToeBoardRow2.get(1) == "O" && ticTacToeBoardRow3.get(2) == "O"){
-                    System.out.println("You Win");
-                    System.exit(0);
-                }
-                else if(ticTacToeBoardRow3.get(0) == "O" && ticTacToeBoardRow2.get(1) == "O" && ticTacToeBoardRow1.get(2) == "O"){
-                    System.out.println("You Win");
-                    System.exit(0);
+                    }
+                    while (canPlace != true) {
+                        aiPlacement = (int) ((Math.random() * 9) + 1);
+                        if (aiPlacement == 1 && ticTacToeBoardRow3.get(0) == "■") {
+                            ticTacToeBoardRow3.remove(0);
+                            ticTacToeBoardRow3.add(0, "O");
+                            System.out.println(aiPlacement);
+                            System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
+                            turns++;
+                            canPlace = true;
+                        } else if (aiPlacement == 2 && ticTacToeBoardRow3.get(1) == "■") {
+                            ticTacToeBoardRow3.remove(1);
+                            ticTacToeBoardRow3.add(1, "O");
+                            System.out.println(aiPlacement);
+                            System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
+                            turns++;
+                            canPlace = true;
+                        } else if (aiPlacement == 3 && ticTacToeBoardRow3.get(2) == "■") {
+                            ticTacToeBoardRow3.remove(2);
+                            ticTacToeBoardRow3.add(2, "O");
+                            System.out.println(aiPlacement);
+                            System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
+                            turns++;
+                            canPlace = true;
+                        } else if (aiPlacement == 4 && ticTacToeBoardRow2.get(0) == "■") {
+                            ticTacToeBoardRow2.remove(0);
+                            ticTacToeBoardRow2.add(0, "O");
+                            System.out.println(aiPlacement);
+                            System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
+                            turns++;
+                            canPlace = true;
+                        } else if (aiPlacement == 5 && ticTacToeBoardRow2.get(1) == "■") {
+                            ticTacToeBoardRow2.remove(1);
+                            ticTacToeBoardRow2.add(1, "O");
+                            System.out.println(aiPlacement);
+                            System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
+                            turns++;
+                            canPlace = true;
+                        } else if (aiPlacement == 6 && ticTacToeBoardRow2.get(2) == "■") {
+                            ticTacToeBoardRow2.remove(2);
+                            ticTacToeBoardRow2.add(2, "O");
+                            System.out.println(aiPlacement);
+                            System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
+                            turns++;
+                            canPlace = true;
+                        } else if (aiPlacement == 7 && ticTacToeBoardRow1.get(0) == "■") {
+                            ticTacToeBoardRow1.remove(0);
+                            ticTacToeBoardRow1.add(0, "O");
+                            System.out.println(aiPlacement);
+                            System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
+                            turns++;
+                            canPlace = true;
+                        } else if (aiPlacement == 8 && ticTacToeBoardRow1.get(1) == "■") {
+                            ticTacToeBoardRow1.remove(1);
+                            ticTacToeBoardRow1.add(1, "O");
+                            System.out.println(aiPlacement);
+                            System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
+                            turns++;
+                            canPlace = true;
+                        } else if (aiPlacement == 9 && ticTacToeBoardRow1.get(2) == "■") {
+                            ticTacToeBoardRow1.remove(2);
+                            ticTacToeBoardRow1.add(2, "O");
+                            System.out.println(aiPlacement);
+                            System.out.println(ticTacToeBoardRow1 + "\n" + ticTacToeBoardRow2 + "\n" + ticTacToeBoardRow3);
+                            turns++;
+                            canPlace = true;
+                        }
+                    }
+                    canPlace = false;
+                    checkWin(ticTacToeWin);
                 }
 
 
-//                num[i] = playerPlacement;
-//                aiPlacement = (int) ((Math.random() * 9) + 1);
-//                if (aiPlacement == num[i])
-//                {
-//                    aiPlacement = (int) ((Math.random() * 9) + 1);
-//                }
-//                else if(aiPlacement !)
-//            }
-//            if () {
-//                ticTacToeWin = true;
+
 
             }
+
         }
         else if(playAnswer == 0)
 
@@ -225,9 +174,97 @@ public class TicTacToe {
             System.exit(0);
         }
 
+
     }
+    public static boolean checkWin(boolean winner){
+        winner = false;
+        if (ticTacToeBoardRow1.get(0) == "X" && ticTacToeBoardRow1.get(1) == "X" && ticTacToeBoardRow1.get(2) == "X") {
+            System.out.println("You Win");
+            System.exit(0);
+            winner = true;
 
+        }
+        else if(ticTacToeBoardRow1.get(0) == "X" && ticTacToeBoardRow2.get(0) == "X" && ticTacToeBoardRow3.get(0) == "X"){
+            System.out.println("You Win");
+            System.exit(0);
+            winner = true;
 
+        }
+        else if(ticTacToeBoardRow1.get(1) == "X" && ticTacToeBoardRow2.get(1) == "X" && ticTacToeBoardRow3.get(1) == "X"){
+            System.out.println("You Win");
+            System.exit(0);
+            winner = true;
+
+        }
+        else if(ticTacToeBoardRow1.get(2) == "X" && ticTacToeBoardRow2.get(2) == "X" && ticTacToeBoardRow3.get(2) == "X"){
+            System.out.println("You Win");
+            System.exit(0);
+            winner = true;
+
+        }
+        else if(ticTacToeBoardRow2.get(0) == "X" && ticTacToeBoardRow2.get(1) == "X" && ticTacToeBoardRow2.get(2) == "X"){
+            System.out.println("You Win");
+            System.exit(0);
+            winner = true;
+        }
+        else if(ticTacToeBoardRow3.get(0) == "X" && ticTacToeBoardRow3.get(1) == "X" && ticTacToeBoardRow3.get(2) == "X"){
+            System.out.println("You Win");
+            System.exit(0);
+            winner = true;
+        }
+        else if(ticTacToeBoardRow1.get(0) == "X" && ticTacToeBoardRow2.get(1) == "X" && ticTacToeBoardRow3.get(2) == "X"){
+            System.out.println("You Win");
+            System.exit(0);
+            winner = true;
+        }
+        else if(ticTacToeBoardRow3.get(0) == "X" && ticTacToeBoardRow2.get(1) == "X" && ticTacToeBoardRow1.get(2) == "X"){
+            System.out.println("You Win");
+            System.exit(0);
+            winner = true;
+        }
+        if (ticTacToeBoardRow1.get(0) == "O" && ticTacToeBoardRow1.get(1) == "O" && ticTacToeBoardRow1.get(2) == "O") {
+            System.out.println("You Lost");
+            System.exit(0);
+            winner = true;
+        }
+        else if(ticTacToeBoardRow1.get(0) == "O" && ticTacToeBoardRow2.get(0) == "O" && ticTacToeBoardRow3.get(0) == "O"){
+            System.out.println("You Lost");
+            System.exit(0);
+            winner = true;
+        }
+        else if(ticTacToeBoardRow1.get(1) == "O" && ticTacToeBoardRow2.get(1) == "O" && ticTacToeBoardRow3.get(1) == "O"){
+            System.out.println("You Lost");
+            System.exit(0);
+            winner = true;
+        }
+        else if(ticTacToeBoardRow1.get(2) == "O" && ticTacToeBoardRow2.get(2) == "O" && ticTacToeBoardRow3.get(2) == "O"){
+            System.out.println("You Lost");
+            System.exit(0);
+            winner = true;
+        }
+        else if(ticTacToeBoardRow2.get(0) == "O" && ticTacToeBoardRow2.get(1) == "O" && ticTacToeBoardRow2.get(2) == "O"){
+            System.out.println("You Lost");
+            System.exit(0);
+            winner = true;
+        }
+        else if(ticTacToeBoardRow3.get(0) == "O" && ticTacToeBoardRow3.get(1) == "O" && ticTacToeBoardRow3.get(2) == "O"){
+            System.out.println("You Lost");
+            System.exit(0);
+            winner = true;
+        }
+        else if(ticTacToeBoardRow1.get(0) == "O" && ticTacToeBoardRow2.get(1) == "O" && ticTacToeBoardRow3.get(2) == "O"){
+            System.out.println("You Lost");
+            System.exit(0);
+            winner = true;
+        }
+        else if(ticTacToeBoardRow3.get(0) == "O" && ticTacToeBoardRow2.get(1) == "O" && ticTacToeBoardRow1.get(2) == "O"){
+            System.out.println("You Lost");
+            System.exit(0);
+            winner = true;
+        }
+
+        return winner;
+    }
 }
 
 
